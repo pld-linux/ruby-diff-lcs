@@ -43,7 +43,7 @@ Ruby Diff tool
 rm -rf diff-lcs-%{version}
 # use pax because dirs in tar file are read-only, preventing extraction
 gunzip -c %{SOURCE0} | pax -r -v
-chmod -R o+rw diff-lcs-%{version}
+chmod -R u+rw diff-lcs-%{version}
 %setup -D -T -n diff-lcs-%{version}
 %patch0 -p1
 
