@@ -1,5 +1,5 @@
-%define	ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
-%define ruby_ridir      %(ruby -r rbconfig -e 'include Config; print File.join(CONFIG["datadir"], "ri", CONFIG["ruby_version"], "system")')
+%define		ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
+%define		ruby_ridir	%(ruby -r rbconfig -e 'include Config; print File.join(CONFIG["datadir"], "ri", CONFIG["ruby_version"], "system")')
 
 Summary:	a Ruby port of Algorithm::Diff
 Summary(pl):	Port Algorithm::Diff dla jêzyka Ruby
@@ -67,8 +67,8 @@ chmod -R u+rw diff-lcs-%{version}
 %build
 cp %{SOURCE1} .
 ruby setup.rb config \
-        --site-ruby=%{ruby_rubylibdir} \
-        --so-dir=%{ruby_archdir}
+	--site-ruby=%{ruby_rubylibdir} \
+	--so-dir=%{ruby_archdir}
 
 ruby setup.rb setup
 rdoc --inline-source --op rdoc lib
@@ -82,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{ruby_rubylibdir},%{ruby_ridir}}
 
 ruby setup.rb install \
-        --prefix=$RPM_BUILD_ROOT
+	--prefix=$RPM_BUILD_ROOT
 
 cp -a ri/ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 
@@ -97,7 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n htmldiff
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/htmldiff
-   
+
 %files ldiff
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ldiff
