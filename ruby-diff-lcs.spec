@@ -10,6 +10,7 @@ Group:		Development/Libraries
 Source0:	http://rubyforge.org/frs/download.php/1533/diff-lcs-%{version}.tar.gz
 # Source0-md5:	ecea8ae3b8823e740ef6cbef84495245
 Source1:	setup.rb
+Patch0:	%{name}-nogems.patch
 URL:	http://raa.ruby-lang.org/project/diff-lcs/
 BuildRequires:	ruby
 BuildRequires:	pax
@@ -44,6 +45,7 @@ rm -rf diff-lcs-%{version}
 gunzip -c %{SOURCE0} | pax -r -v
 chmod -R o+rw diff-lcs-%{version}
 %setup -D -T -n diff-lcs-%{version}
+%patch0 -p1
 
 %build
 cp %{SOURCE1} .
