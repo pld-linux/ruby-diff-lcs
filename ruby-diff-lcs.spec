@@ -67,8 +67,8 @@ chmod -R u+rw diff-lcs-%{version}
 %build
 cp %{SOURCE1} .
 ruby setup.rb config \
-	--site-ruby=%{ruby_rubylibdir} \
-	--so-dir=%{ruby_archdir}
+	--siterubyver=%{ruby_rubylibdir} \
+	--sodir=%{ruby_archdir}
 
 ruby setup.rb setup
 rdoc --inline-source --op rdoc lib
