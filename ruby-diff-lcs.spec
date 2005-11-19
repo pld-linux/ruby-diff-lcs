@@ -1,6 +1,3 @@
-%define		ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
-%define		ruby_ridir	%(ruby -r rbconfig -e 'include Config; print File.join(CONFIG["datadir"], "ri", CONFIG["ruby_version"], "system")')
-
 Summary:	a Ruby port of Algorithm::Diff
 Summary(pl):	Port Algorithm::Diff dla jêzyka Ruby
 Name:		ruby-Diff-LCS
@@ -12,7 +9,8 @@ Source0:	http://rubyforge.org/frs/download.php/1533/diff-lcs-%{version}.tar.gz
 # Source0-md5:	ecea8ae3b8823e740ef6cbef84495245
 Source1:	setup.rb
 Patch0:		%{name}-nogems.patch
-URL:	http://raa.ruby-lang.org/project/diff-lcs/
+URL:		http://raa.ruby-lang.org/project/diff-lcs/
+BuildRequires:	rpmbuild(macros) >= 1.263
 BuildRequires:	pax
 BuildRequires:	ruby
 BuildArch:	noarch
@@ -23,7 +21,7 @@ Diff::LCS is a port of Algorithm::Diff that uses the McIlroy-Hunt
 longest common subsequence (LCS) algorithm to compute intelligent
 differences between two sequenced enumerable containers. The
 implementation is based on Mario I. Wolczko's Smalltalk version (1.2,
-1993) and Ned Konz's Perl version (Algorithm::Diff). 
+1993) and Ned Konz's Perl version (Algorithm::Diff).
 
 %description -l pl
 Diff::LCS to port Algorithm::Diff u¿ywaj±cy algorytmu najd³u¿szego
@@ -61,11 +59,12 @@ rm -rf diff-lcs-%{version}
 # use pax because dirs in tar file are read-only, preventing extraction
 gunzip -c %{SOURCE0} | pax -r -v
 chmod -R u+rw diff-lcs-%{version}
-%setup -D -T -n diff-lcs-%{version}
+%setup -q -D -T -n diff-lcs-%{version}
 %patch0 -p1
 
-%build
 cp %{SOURCE1} .
+
+%build
 ruby setup.rb config \
 	--siterubyver=%{ruby_rubylibdir} \
 	--sodir=%{ruby_archdir}
