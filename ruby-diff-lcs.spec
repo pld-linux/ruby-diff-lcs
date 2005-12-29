@@ -10,10 +10,11 @@ Source0:	http://rubyforge.org/frs/download.php/1533/diff-lcs-%{version}.tar.gz
 Source1:	setup.rb
 Patch0:		%{name}-nogems.patch
 URL:		http://raa.ruby-lang.org/project/diff-lcs/
-BuildRequires:	rpmbuild(macros) >= 1.263
+BuildRequires:	rpmbuild(macros) >= 1.277
 BuildRequires:	pax
 BuildRequires:	ruby-modules
 BuildArch:	noarch
+%ruby_mod_ver_requires_eq
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
