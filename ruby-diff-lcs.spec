@@ -34,7 +34,7 @@ autorstwa Neda Konza (Algorithm::Diff).
 
 %package -n htmldiff
 Summary:	Tool to find differences in HTML files
-SUmmary(pl):	Narzêdzie do znajdowania ró¿nic w plikach HTML
+Summary(pl):	Narzêdzie do znajdowania ró¿nic w plikach HTML
 Group:		Applications/Text
 Requires:	ruby-Text-Format >= 0.64
 
