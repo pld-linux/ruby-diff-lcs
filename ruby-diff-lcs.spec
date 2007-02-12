@@ -1,5 +1,5 @@
 Summary:	a Ruby port of Algorithm::Diff
-Summary(pl):	Port Algorithm::Diff dla jêzyka Ruby
+Summary(pl.UTF-8):   Port Algorithm::Diff dla jÄ™zyka Ruby
 Name:		ruby-Diff-LCS
 Version:	1.1.1
 Release:	2
@@ -24,36 +24,36 @@ differences between two sequenced enumerable containers. The
 implementation is based on Mario I. Wolczko's Smalltalk version (1.2,
 1993) and Ned Konz's Perl version (Algorithm::Diff).
 
-%description -l pl
-Diff::LCS to port Algorithm::Diff u¿ywaj±cy algorytmu najd³u¿szego
-wspólnego podci±gu (LCS - longest common subsequence) McIlroya-Hunta
-do obliczania inteligentnych ró¿nic miêdzy dwoma uporz±dkowanymi
+%description -l pl.UTF-8
+Diff::LCS to port Algorithm::Diff uÅ¼ywajÄ…cy algorytmu najdÅ‚uÅ¼szego
+wspÃ³lnego podciÄ…gu (LCS - longest common subsequence) McIlroya-Hunta
+do obliczania inteligentnych rÃ³Å¼nic miÄ™dzy dwoma uporzÄ…dkowanymi
 kontenerami. Implementacja jest oparta na wersji dla Smalltalka
 autorstwa Mario I. Wolczko (1.2 z roku 1993) i wersji dla Perla
 autorstwa Neda Konza (Algorithm::Diff).
 
 %package -n htmldiff
 Summary:	Tool to find differences in HTML files
-Summary(pl):	Narzêdzie do znajdowania ró¿nic w plikach HTML
+Summary(pl.UTF-8):   NarzÄ™dzie do znajdowania rÃ³Å¼nic w plikach HTML
 Group:		Applications/Text
 Requires:	ruby-Text-Format >= 0.64
 
 %description -n htmldiff
 Tool to find differences in HTML files.
 
-%description -n htmldiff -l pl
-Narzêdzie do znajdowania ró¿nic w plikach HTML.
+%description -n htmldiff -l pl.UTF-8
+NarzÄ™dzie do znajdowania rÃ³Å¼nic w plikach HTML.
 
 %package ldiff
 Summary:	Ruby Diff tool
-Summary(pl):	Narzêdzie Ruby Diff
+Summary(pl.UTF-8):   NarzÄ™dzie Ruby Diff
 Group:		Applications/Text
 
 %description ldiff
 Ruby Diff tool.
 
-%description ldiff -l pl
-Narzêdzie Ruby Diff.
+%description ldiff -l pl.UTF-8
+NarzÄ™dzie Ruby Diff.
 
 %prep
 rm -rf diff-lcs-%{version}
