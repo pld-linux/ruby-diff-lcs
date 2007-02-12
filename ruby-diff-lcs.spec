@@ -1,5 +1,5 @@
 Summary:	a Ruby port of Algorithm::Diff
-Summary(pl.UTF-8):   Port Algorithm::Diff dla języka Ruby
+Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-Diff-LCS
 Version:	1.1.1
 Release:	2
@@ -34,7 +34,7 @@ autorstwa Neda Konza (Algorithm::Diff).
 
 %package -n htmldiff
 Summary:	Tool to find differences in HTML files
-Summary(pl.UTF-8):   Narzędzie do znajdowania różnic w plikach HTML
+Summary(pl.UTF-8):	Narzędzie do znajdowania różnic w plikach HTML
 Group:		Applications/Text
 Requires:	ruby-Text-Format >= 0.64
 
@@ -46,7 +46,7 @@ Narzędzie do znajdowania różnic w plikach HTML.
 
 %package ldiff
 Summary:	Ruby Diff tool
-Summary(pl.UTF-8):   Narzędzie Ruby Diff
+Summary(pl.UTF-8):	Narzędzie Ruby Diff
 Group:		Applications/Text
 
 %description ldiff
