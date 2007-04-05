@@ -2,7 +2,7 @@ Summary:	a Ruby port of Algorithm::Diff
 Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-Diff-LCS
 Version:	1.1.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		Development/Libraries
 Source0:	http://rubyforge.org/frs/download.php/1533/diff-lcs-%{version}.tar.gz
@@ -13,7 +13,6 @@ URL:		http://raa.ruby-lang.org/project/diff-lcs/
 BuildRequires:	rpmbuild(macros) >= 1.277
 BuildRequires:	pax
 BuildRequires:	ruby-modules
-BuildArch:	noarch
 %{?ruby_mod_ver_requires_eq}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
