@@ -16,6 +16,7 @@ BuildRequires:	pax
 BuildRequires:	ruby-modules
 %{?ruby_mod_ver_requires_eq}
 Obsoletes:	ruby-Diff-LCS
+Provides:	ruby-Diff-LCS
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
