@@ -1,7 +1,7 @@
 diff -ur diff-lcs-1.1.1-orig/bin/htmldiff diff-lcs-1.1.1/bin/htmldiff
 --- diff-lcs-1.1.1-orig/bin/htmldiff	2004-10-18 00:38:45.109326185 -0600
 +++ diff-lcs-1.1.1/bin/htmldiff	2004-10-18 00:39:46.921826912 -0600
-@@ -13,13 +13,7 @@
+@@ -13,14 +13,8 @@
  # $Id$
  #++
  
@@ -10,8 +10,10 @@ diff -ur diff-lcs-1.1.1-orig/bin/htmldiff diff-lcs-1.1.1/bin/htmldiff
 -  require_gem 'diff-lcs', "1.1.1"
 -  require 'diff/lcs/string'
 -rescue LoadError
+-  require 'diff/lcs'
 -  require 'diff/lcs/string'
 -end
++require 'diff/lcs'
 +require 'diff/lcs/string'
  
  require 'text/format'
