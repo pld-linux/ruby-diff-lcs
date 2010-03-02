@@ -3,7 +3,7 @@ Summary:	a Ruby port of Algorithm::Diff
 Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-%{pkgname}
 Version:	1.1.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Libraries
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
@@ -61,7 +61,7 @@ Dokumentacji w formacie ri dla %{pkgname}.
 Summary:	Tool to find differences in HTML files
 Summary(pl.UTF-8):	Narzędzie do znajdowania różnic w plikach HTML
 Group:		Applications/Text
-Requires:	ruby-Text-Format >= 0.64
+Requires:	ruby-text-format >= 0.64
 
 %description -n htmldiff
 Tool to find differences in HTML files.
