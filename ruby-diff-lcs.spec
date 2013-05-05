@@ -2,19 +2,15 @@
 Summary:	a Ruby port of Algorithm::Diff
 Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-%{pkgname}
-Version:	1.1.2
-Release:	3
+Version:	1.1.3
+Release:	1
 License:	GPL v2+ or Ruby or Artistic
 Group:		Development/Libraries
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	60524d29b37f76d56ce835323e324879
-Patch0:		%{name}-nogems.patch
-URL:		http://raa.ruby-lang.org/project/diff-lcs/
+# Source0-md5:	86595b4618756d1dceac28e6104e285f
+URL:		http://diff-lcs.rubyforge.org/
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
-%if %(locale -a | grep -q '^en_US$'; echo $?)
-BuildRequires:	glibc-localedb-all
-%endif
 Provides:	ruby-Diff-LCS
 Obsoletes:	ruby-Diff-LCS
 BuildArch:	noarch
@@ -84,17 +80,9 @@ Narzędzie Ruby Diff.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
-%patch0 -p1
 %{__sed} -i -e '1 s,#!.*ruby,#!%{__ruby},' bin/*
 
-iconv -flatin1 -tutf8 lib/diff/lcs/ldiff.rb > tmp
-mv tmp lib/diff/lcs/ldiff.rb
-
-find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
-
 %build
-# docs need UTF-8 locale
-export LC_ALL=en_US.UTF-8
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
 rm -r ri/{Array,String}
@@ -114,7 +102,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README.rdoc History.rdoc License.rdoc
 %dir %{ruby_vendorlibdir}/diff
+%{ruby_vendorlibdir}/diff-lcs.rb
 %{ruby_vendorlibdir}/diff/lcs.rb
 %{ruby_vendorlibdir}/diff/lcs
 
