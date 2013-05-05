@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-%{pkgname}
 Version:	1.1.2
 Release:	3
-License:	GPL
+License:	GPL v2+ or Ruby or Artistic
 Group:		Development/Libraries
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
 # Source0-md5:	60524d29b37f76d56ce835323e324879
@@ -84,10 +84,13 @@ Narzędzie Ruby Diff.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch0 -p1
 %{__sed} -i -e '1 s,#!.*ruby,#!%{__ruby},' bin/*
 
 iconv -flatin1 -tutf8 lib/diff/lcs/ldiff.rb > tmp
 mv tmp lib/diff/lcs/ldiff.rb
+
+find '(' -name '*~' -o -name '*.orig' ')' -print0 | xargs -0 -r -l512 rm -f
 
 %build
 # docs need UTF-8 locale
