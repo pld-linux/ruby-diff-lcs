@@ -12,6 +12,9 @@ Patch0:		%{name}-nogems.patch
 URL:		http://raa.ruby-lang.org/project/diff-lcs/
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
+%if %(locale -a | grep -q '^en_US$'; echo $?)
+BuildRequires:	glibc-localedb-all
+%endif
 Provides:	ruby-Diff-LCS
 Obsoletes:	ruby-Diff-LCS
 BuildArch:	noarch
@@ -83,7 +86,12 @@ Narzędzie Ruby Diff.
 %setup -q -n %{pkgname}-%{version}
 %{__sed} -i -e '1 s,#!.*ruby,#!%{__ruby},' bin/*
 
+iconv -flatin1 -tutf8 lib/diff/lcs/ldiff.rb > tmp
+mv tmp lib/diff/lcs/ldiff.rb
+
 %build
+# docs need UTF-8 locale
+export LC_ALL=en_US.UTF-8
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
 rm -r ri/{Array,String}
