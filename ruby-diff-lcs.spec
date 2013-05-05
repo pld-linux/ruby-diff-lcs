@@ -3,19 +3,18 @@ Summary:	a Ruby port of Algorithm::Diff
 Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-%{pkgname}
 Version:	1.1.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Libraries
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
 # Source0-md5:	60524d29b37f76d56ce835323e324879
 Patch0:		%{name}-nogems.patch
 URL:		http://raa.ruby-lang.org/project/diff-lcs/
-BuildRequires:	rpmbuild(macros) >= 1.484
-BuildRequires:	ruby >= 1:1.8.6
-BuildRequires:	ruby-modules
-%{?ruby_mod_ver_requires_eq}
-Obsoletes:	ruby-Diff-LCS
+BuildRequires:	rpm-rubyprov
+BuildRequires:	rpmbuild(macros) >= 1.656
 Provides:	ruby-Diff-LCS
+Obsoletes:	ruby-Diff-LCS
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -81,27 +80,21 @@ Ruby Diff tool.
 Narzędzie Ruby Diff.
 
 %prep
-%setup -q -c
-%{__tar} xf %{SOURCE0} -O data.tar.gz | %{__tar} xz
-find -newer README  -o -print | xargs touch --reference %{SOURCE0}
-%patch0 -p1
-
-%{__sed} -i -e 's|/usr/bin/env ruby|%{__ruby}|' bin/*diff
+%setup -q -n %{pkgname}-%{version}
+%{__sed} -i -e '1 s,#!.*ruby,#!%{__ruby},' bin/*
 
 %build
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
 rm -r ri/{Array,String}
 rm ri/created.rid
+rm ri/cache.ri
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{ruby_rubylibdir},%{ruby_ridir},%{ruby_rdocdir}}
-
-install bin/htmldiff $RPM_BUILD_ROOT%{_bindir}
-install bin/ldiff $RPM_BUILD_ROOT%{_bindir}
-
-cp -a lib/* $RPM_BUILD_ROOT%{ruby_rubylibdir}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{ruby_vendorlibdir},%{ruby_ridir},%{ruby_rdocdir}}
+install -p bin/* $RPM_BUILD_ROOT%{_bindir}
+cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
 cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 cp -a rdoc $RPM_BUILD_ROOT%{ruby_rdocdir}/%{name}-%{version}
 
@@ -110,7 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{ruby_rubylibdir}/*
+%dir %{ruby_vendorlibdir}/diff
+%{ruby_vendorlibdir}/diff/lcs.rb
+%{ruby_vendorlibdir}/diff/lcs
 
 %files rdoc
 %defattr(644,root,root,755)
