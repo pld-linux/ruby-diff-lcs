@@ -7,7 +7,7 @@ Summary:	a Ruby port of Algorithm::Diff
 Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-%{pkgname}
 Version:	1.2.5
-Release:	3
+Release:	4
 License:	GPL v2+ or MIT or Artistic
 Group:		Development/Libraries
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
