@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests		# build without tests
+%bcond_with	tests		# tests [actually not run]
 
 %define pkgname diff-lcs
 Summary:	a Ruby port of Algorithm::Diff
@@ -15,6 +15,8 @@ Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
 URL:		http://diff-lcs.rubyforge.org/
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
+BuildRequires:	ruby-rdoc < 5
+BuildRequires:	ruby-rdoc >= 4.0
 %if %{with tests}
 BuildRequires:	ruby-hoe < 4
 BuildRequires:	ruby-hoe >= 3.7
@@ -32,8 +34,6 @@ BuildRequires:	ruby-hoe-travis < 2
 BuildRequires:	ruby-hoe-travis >= 1.2
 BuildRequires:	ruby-rake < 11
 BuildRequires:	ruby-rake >= 10.0
-BuildRequires:	ruby-rdoc < 5
-BuildRequires:	ruby-rdoc >= 4.0
 BuildRequires:	ruby-rspec < 3
 BuildRequires:	ruby-rspec >= 2.0
 BuildRequires:	ruby-rubyforge >= 2.0.4
@@ -59,28 +59,28 @@ autorstwa Mario I. Wolczko (1.2 z roku 1993) i wersji dla Perla
 autorstwa Neda Konza (Algorithm::Diff).
 
 %package rdoc
-Summary:	HTML documentation for %{pkgname}
-Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla %{pkgname}
+Summary:	HTML documentation for Ruby Diff::LCS module
+Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla modułu języka Ruby Diff::LCS
 Group:		Documentation
 Requires:	ruby >= 1:1.8.7-4
 
 %description rdoc
-HTML documentation for %{pkgname}.
+HTML documentation for Ruby Diff::LCS module.
 
 %description rdoc -l pl.UTF-8
-Dokumentacja w formacie HTML dla %{pkgname}.
+Dokumentacja w formacie HTML dla modułu języka Ruby Diff::LCS
 
 %package ri
-Summary:	ri documentation for %{pkgname}
-Summary(pl.UTF-8):	Dokumentacja w formacie ri dla %{pkgname}
+Summary:	ri documentation for Rubty Diff::LCS module
+Summary(pl.UTF-8):	Dokumentacja w formacie ri dla modułu języka Ruby Diff::LCS
 Group:		Documentation
 Requires:	ruby
 
 %description ri
-ri documentation for %{pkgname}.
+ri documentation for Rubty Diff::LCS module.
 
 %description ri -l pl.UTF-8
-Dokumentacji w formacie ri dla %{pkgname}.
+Dokumentacja w formacie ri dla modułu języka Ruby Diff::LCS.
 
 %package -n htmldiff
 Summary:	Tool to find differences in HTML files
@@ -115,9 +115,9 @@ Narzędzie Ruby Diff.
 
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
-rm -r ri/{Array,String}
-rm ri/created.rid
-rm ri/cache.ri
+%{__rm} -r ri/{Array,String}
+%{__rm} ri/created.rid
+%{__rm} ri/cache.ri
 
 %install
 rm -rf $RPM_BUILD_ROOT
