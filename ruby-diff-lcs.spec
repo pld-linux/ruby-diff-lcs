@@ -6,20 +6,20 @@
 Summary:	a Ruby port of Algorithm::Diff
 Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-%{pkgname}
-Version:	1.2.5
-Release:	4
-License:	GPL v2+ or MIT or Artistic
+Version:	1.3
+Release:	1
+License:	GPL v2+ or MIT or Artistic v2
 Group:		Development/Libraries
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	7172cb271324fa944d9fbea5fe1f7344
+# Source0-md5:	9b1664d1bdf336f4309343c2a640d9e8
 URL:		http://diff-lcs.rubyforge.org/
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
-BuildRequires:	ruby-rdoc < 5
-BuildRequires:	ruby-rdoc >= 4.0
+BuildRequires:	ruby >= 1:1.8
+BuildRequires:	ruby-rdoc
 %if %{with tests}
 BuildRequires:	ruby-hoe < 4
-BuildRequires:	ruby-hoe >= 3.7
+BuildRequires:	ruby-hoe >= 3.16
 BuildRequires:	ruby-hoe-bundler < 2
 BuildRequires:	ruby-hoe-bundler >= 1.2
 BuildRequires:	ruby-hoe-doofus < 2
@@ -27,16 +27,15 @@ BuildRequires:	ruby-hoe-doofus >= 1.0
 BuildRequires:	ruby-hoe-gemspec2 < 2
 BuildRequires:	ruby-hoe-gemspec2 >= 1.1
 BuildRequires:	ruby-hoe-git < 2
-BuildRequires:	ruby-hoe-git >= 1.5
+BuildRequires:	ruby-hoe-git >= 1.6
 BuildRequires:	ruby-hoe-rubygems < 2
 BuildRequires:	ruby-hoe-rubygems >= 1.0
 BuildRequires:	ruby-hoe-travis < 2
 BuildRequires:	ruby-hoe-travis >= 1.2
-BuildRequires:	ruby-rake < 11
+BuildRequires:	ruby-rake < 12
 BuildRequires:	ruby-rake >= 10.0
-BuildRequires:	ruby-rspec < 3
+BuildRequires:	ruby-rspec < 4
 BuildRequires:	ruby-rspec >= 2.0
-BuildRequires:	ruby-rubyforge >= 2.0.4
 %endif
 Provides:	ruby-Diff-LCS
 Obsoletes:	ruby-Diff-LCS
@@ -134,7 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.rdoc History.rdoc License.rdoc
+%doc History.md License.md README.rdoc
 %dir %{ruby_vendorlibdir}/diff
 %{ruby_vendorlibdir}/diff-lcs.rb
 %{ruby_vendorlibdir}/diff/lcs.rb
