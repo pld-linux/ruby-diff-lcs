@@ -6,12 +6,12 @@
 Summary:	a Ruby port of Algorithm::Diff
 Summary(pl.UTF-8):	Port Algorithm::Diff dla języka Ruby
 Name:		ruby-%{pkgname}
-Version:	1.3
-Release:	2
+Version:	1.6.2
+Release:	1
 License:	GPL v2+ or MIT or Artistic v2
 Group:		Development/Libraries
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	9b1664d1bdf336f4309343c2a640d9e8
+# Source0-md5:	8b0a52653d73909ba22a84e21f93e116
 URL:		http://diff-lcs.rubyforge.org/
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
@@ -114,7 +114,7 @@ Narzędzie Ruby Diff.
 
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
-%{__rm} -r ri/{Array,String}
+%{__rm} -r ri/{Array,Fixnum,String}
 %{__rm} ri/created.rid
 %{__rm} ri/cache.ri
 
@@ -133,7 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc History.md License.md README.rdoc
+%doc CHANGELOG.md LICENCE.md README.md
 %dir %{ruby_vendorlibdir}/diff
 %{ruby_vendorlibdir}/diff-lcs.rb
 %{ruby_vendorlibdir}/diff/lcs.rb
@@ -147,6 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %files ri
 %defattr(644,root,root,755)
 %{ruby_ridir}/Diff
+%{ruby_ridir}/LCS
 
 %files -n htmldiff
 %defattr(644,root,root,755)
